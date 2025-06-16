@@ -23,13 +23,20 @@ const Registration = () => {
     }));
   };
 
+  const BaseURL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:2512"
+    : "https://nayidishaserver-production.up.railway.app";
+
+
+
   const handleSignup = async (e) => {
     e.preventDefault();
     setMessage("");
     setError("");
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:2512/auth/signup", {
+      const response = await axios.post(`${BaseURL}/auth/signup`, {
         username: formData.name,
         email: formData.email,
         password: formData.password,

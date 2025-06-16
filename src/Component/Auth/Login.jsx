@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  saveToken } from "../../utils/Auth";
+import { saveToken } from "../../utils/Auth";
 import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
@@ -13,8 +13,13 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
 
+    const BaseURL =
+      import.meta.env.MODE === "development"
+        ? "http://localhost:2512"
+        : "https://nayidishaserver-production.up.railway.app";
+
     try {
-      const response = await axios.post("http://localhost:2512/auth/signin", {
+      const response = await axios.post(`${BaseURL}/auth/signin`, {
         email,
         password,
       });
