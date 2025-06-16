@@ -8,7 +8,7 @@ const VerifyEmailPrompt = () => {
     <div className="max-w-md mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Verify Your Email</h2>
       <p className="mb-4">
-        A verification email has been sent to your inbox. Please click the link
+        A verification email has been sent to your inbox or <span className="text-red-900 font-bold"> SPAM FOLDER </span>. Please click the link
         in the email to verify your account.
       </p>
       <button
