@@ -148,7 +148,7 @@ const HomePage = () => {
           that change starts with us.”
         </blockquote>
         <p className="mt-4 font-semibold text-gray-400 text-sm sm:text-base">
-          – Sajal Tiwari , Admin
+          – Sajal Tiwari , Founder...
         </p>
       </section>
 
