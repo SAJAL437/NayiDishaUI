@@ -133,6 +133,7 @@ const ComplainForm = () => {
       });
       setImagePreview(null);
       setCoordinates(null);
+      window.location.reload();
     }
 
     if (issueError) setFormError(issueError);
