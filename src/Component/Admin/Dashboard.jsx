@@ -56,11 +56,10 @@ const Dashboard = () => {
 
   const {
     issues = [],
-    stats = {},
     loading: issuesLoading = false,
     error: issuesError = null,
-    totalIssues = 0,
-    pendingIssues = 0,
+    // totalIssues = 0,
+    // pendingIssues = 0,
   } = useSelector((state) => state.issueList || {});
 
   // Fetch data when page changes
@@ -94,7 +93,10 @@ const Dashboard = () => {
 
   // Pagination handlers
   const handleComplaintsPageChange = (newPage) => {
-    if (newPage >= 0 && newPage < Math.ceil(totalIssues / complaintsPerPage)) {
+    if (
+      newPage >= 0 &&
+      newPage < Math.ceil(totalComplaints / complaintsPerPage)
+    ) {
       setComplaintsPage(newPage);
     }
   };
@@ -105,14 +107,16 @@ const Dashboard = () => {
     }
   };
 
-  // Compute complaint counts by status
-  const complaintData = {
-    totalComplaints: stats.totalComplaints ?? totalIssues ?? 0,
-    pending: stats.pending ?? pendingIssues ?? 0,
-    inProgress: stats.inProgress ?? 0,
-    resolved: stats.resolved ?? 0,
-    rejected: stats.rejected ?? 0,
-  };
+  const totalComplaints = issues.length;
+  const pending = issues.filter(
+    (item) => item.status.toUpperCase() === "PENDING"
+  ).length;
+  const resolved = issues.filter(
+    (item) => item.status.toUpperCase() === "RESOLVED"
+  ).length;
+  const inProgress = issues.filter(
+    (item) => item.status.toUpperCase() === "INPROGRESS"
+  ).length;
 
   // Compute dashboard metrics
   const dashboardMetrics = {
@@ -125,12 +129,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: "Complaints",
-        data: [
-          complaintData.pending,
-          complaintData.inProgress,
-          complaintData.resolved,
-          complaintData.rejected,
-        ],
+        data: [pending, inProgress, resolved],
         backgroundColor: [
           "rgba(234, 179, 8, 0.6)", // yellow-500
           "rgba(168, 85, 247, 0.6)", // purple-500
@@ -241,9 +240,11 @@ const Dashboard = () => {
           {issuesError && <p>Complaints Error: {issuesError}</p>}
           <button
             onClick={handleRetry}
-            className="mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm transition-colors duration-200"
+            className="mt-2 px-4 py-2 text-center bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm transition-colors duration-200"
             aria-label="Retry fetching data"
           >
+            SESSION TIMEOUT
+            <br />
             Retry
           </button>
         </div>
@@ -312,7 +313,7 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               <div className="bg-blue-500/20 rounded-lg p-3 sm:p-4 text-center shadow-sm transition-all duration-300 hover:scale-105 active:scale-95">
                 <h4 className="text-lg sm:text-2xl font-bold text-blue-300">
-                  {complaintData.totalComplaints}
+                  {totalComplaints}
                 </h4>
                 <p className="text-xs sm:text-sm text-blue-200">
                   Total Complaints
@@ -328,7 +329,7 @@ const Dashboard = () => {
               </div>
               <div className="bg-yellow-500/20 rounded-lg p-3 sm:p-4 text-center shadow-sm transition-all duration-300 hover:scale-105 active:scale-95">
                 <h4 className="text-lg sm:text-2xl font-bold text-yellow-300">
-                  {complaintData.pending}
+                  {pending}
                 </h4>
                 <p className="text-xs sm:text-sm text-yellow-200">
                   Pending Complaints
@@ -448,8 +449,8 @@ const Dashboard = () => {
               </div>
             ) : !isChartDataValid ? (
               <div className="text-center text-gray-400 text-sm h-full flex items-center justify-center">
-                {/* No complaint data available. */}
-                site is under maintenance. Please check back later.
+                No complaint data available.
+                {/* site is under maintenance. Please check back later. */}
               </div>
             ) : (
               <Bar data={chartData} options={chartOptions} />
@@ -569,17 +570,17 @@ const Dashboard = () => {
               </button>
               <span className="text-sm text-gray-200">
                 Page {complaintsPage + 1} of{" "}
-                {Math.ceil(totalIssues / complaintsPerPage) || 1}
+                {Math.ceil(totalComplaints / complaintsPerPage) || 1}
               </span>
               <button
                 onClick={() => handleComplaintsPageChange(complaintsPage + 1)}
                 disabled={
                   complaintsPage >=
-                  Math.ceil(totalIssues / complaintsPerPage) - 1
+                  Math.ceil(totalComplaints / complaintsPerPage) - 1
                 }
                 className={`px-3 py-1 text-sm rounded-lg ${
                   complaintsPage >=
-                  Math.ceil(totalIssues / complaintsPerPage) - 1
+                  Math.ceil(totalComplaints / complaintsPerPage) - 1
                     ? "bg-gray-600/50 text-gray-400 cursor-not-allowed"
                     : "bg-blue-600 hover:bg-blue-700 text-white"
                 } transition-colors duration-200`}
