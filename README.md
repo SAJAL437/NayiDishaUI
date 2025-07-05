@@ -49,7 +49,7 @@ It’s not just a complaint portal — it’s a movement towards transparency, a
 <img src="/public/screenshots/login-register.png" alt="login/register" width="800" height="600"/>
 
 ### 📍 Raise Complaint  
-<img src="/public/screenshots/complain.png" alt="Raise Complaint" width="800" height="600"/>
+<img src="/public/screenshots/complains.png" alt="Raise Complaint" width="800" height="600"/>
 
 ### 📊 Admin Dashboard  
 <img src="/public/screenshots/AdminDashboard.png" alt="Admin Dashboard" width="800" height="600"/>
