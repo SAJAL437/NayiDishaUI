@@ -1,12 +1,60 @@
-# React + Vite
+# 🌟 Nayi Disha Web App - A Step Towards Better Civic Engagement
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> "Empowering citizens to raise their voice for a better tomorrow."  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧭 Overview
 
-## Expanding the ESLint configuration
+**Nayi Disha** is a full-stack web application designed to give citizens a smart and easy platform to raise complaints on public issues such as traffic problems, water shortages, electricity failures, corruption, and more.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+It’s not just a complaint portal — it’s a movement towards transparency, accountability, and digital empowerment.
+
+---
+
+## ✨ Features
+
+🔐 **User Authentication (JWT based)**  
+📍 **Map-Based Location Selection (Leaflet.js)**   
+📸 **Image Upload for Proofs**  
+📝 **Raise Complaints with Predefined Categories**  
+📊 **Admin Panel for Complaint Management**  
+📥 **Download Complaint as PDF**  
+📧 **Email Notification**  
+📤 **Export Data to Excel (Admin)**   
+🔍 **Filter, Sort & Search Complaints**  
+👤 **User Profile Update with Image Preview**  
+
+---
+
+## 🧱 Tech Stack
+
+| Frontend      | Backend       | Database    | Others                  |
+|---------------|---------------|-------------|--------------------------|
+| React.js      | Spring Boot   | MySQL       | Leaflet.js (Map)        |
+| Tailwind CSS  | Spring Security (JWT) | Cloudinary (Images) | iText (PDF Generator) |
+| Redux Toolkit | Spring Data JPA |            | 
+
+---
+
+## 🔗 Live Demo
+
+🚀 [Visit Nayi Disha Live](https://your-deployed-url.com) *(Coming Soon)*
+
+---
+
+## 🖼️ Screenshots
+
+### 🔒 Login / Register  
+<img src="/public/screenshots/login-register.png" alt="login/register" width="800" height="600"/>
+
+### 📍 Raise Complaint  
+<img src="/public/screenshots/complain.png" alt="Raise Complaint" width="800" height="600"/>
+
+### 📊 Admin Dashboard  
+<img src="/public/screenshots/AdminDashboard.png" alt="Admin Dashboard" width="800" height="600"/>
+
+---
+
+## 📁 Folder Structure
+
